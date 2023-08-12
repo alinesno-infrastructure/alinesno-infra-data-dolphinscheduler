@@ -57,24 +57,7 @@
         </dependency>
         <dependency>
             <groupId>com.ailnesno.infra.data.dolphinscheduler</groupId>
-            <artifactId>alinesno-infra-data-dolphinscheduler-alert-slack</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ailnesno.infra.data.dolphinscheduler</groupId>
             <artifactId>alinesno-infra-data-dolphinscheduler-alert-wechat</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ailnesno.infra.data.dolphinscheduler</groupId>
-            <artifactId>alinesno-infra-data-dolphinscheduler-alert-pagerduty</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ailnesno.infra.data.dolphinscheduler</groupId>
-            <artifactId>alinesno-infra-data-dolphinscheduler-alert-webexteams</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.ailnesno.infra.data.dolphinscheduler</groupId>
-            <artifactId>alinesno-infra-data-dolphinscheduler-alert-telegram</artifactId>
         </dependency>
 
         <dependency>
