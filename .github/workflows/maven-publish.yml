@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      security-events: write
       packages: write
 
     env:
@@ -185,6 +186,8 @@ jobs:
       - name: Code scan
         run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
 
+      - name: Maven Dependency Tree Dependency Submission
+        uses: advanced-security/maven-dependency-submission-action@v3.0.2
 
       - name: Install MurphySec code scan cli
         run: |
@@ -196,13 +199,18 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
+          image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_API_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
+          ormat: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '0'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+          
       - name: local remote scp
         uses: cross-the-world/scp-pipeline@master
         with:
