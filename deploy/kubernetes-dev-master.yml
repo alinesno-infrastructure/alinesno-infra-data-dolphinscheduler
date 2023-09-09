@@ -36,7 +36,7 @@ spec:
         - name: aliyun-docker-registry
       containers:
         - name: alinesno-infra-data-${PROJECT_MASTER_NAME}
-          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/alinesno-infra-data-${PROJECT_MASTER_NAME}:${VERSION}
+          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/${PROJECT_MASTER_NAME}:${VERSION}
           env:
             - name: JAVA_TOOL_OPTIONS
               value: |
