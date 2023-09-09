@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: master-server
+    
+  # 开发数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev_alinesno_infra_dolphinscheduler_v100?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: adminer
+    hikari:
+      connection-test-query: select 1
+      minimum-idle: 5
+      auto-commit: true
+      validation-timeout: 3000
+      pool-name: DolphinScheduler
+      maximum-pool-size: 50
+      connection-timeout: 30000
+      idle-timeout: 600000
+      leak-detection-threshold: 0
+      initialization-fail-timeout: 1
+
+  cache:
+    type: none
+    cache-names:
+      - tenant
+      - user
+      - processDefinition
+      - processTaskRelation
+      - taskDefinition
+      - workerGroup
+      - schedule
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=300s,recordStats
+
+# 注册中心配置
+registry:
+  plugin-name: zookeeper
+  servers: 127.0.01:2181
+  namespace: dolphinscheduler
+  base-sleep-time-ms: 60
+  max-sleep-ms: 300
+  max-retries: 5
+  session-timeout-ms: 30000
+  connection-timeout-ms: 7500
+  block-until-cconnected-wwait: 600
+  digest: 
+
+server:
+  port: 5679
+# 去掉默认banner
+mybatis-plus:
+  global-config:
+    banner: false
+
+logging:
+  config: classpath:logback-master.xml   

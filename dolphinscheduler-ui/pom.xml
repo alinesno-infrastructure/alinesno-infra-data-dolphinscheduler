@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.4</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>dolphinscheduler-ui</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<properties>
+		<node.version>v12.20.2</node.version>
+		<npm.version>6.14.11</npm.version>
+		<sonar.sources>src</sonar.sources>
+
+    <!-- 构建类型 -->
+		<build.maven.cmd>run build:uat</build.maven.cmd>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>release</id>
+		</profile>
+	</profiles>
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.10.0</version>
+        <configuration>
+          <!-- 若不方便访问官网，可使用国内淘宝镜像 -->
+          <nodeDownloadRoot>https://npm.taobao.org/mirrors/node/</nodeDownloadRoot>
+          <npmDownloadRoot>https://registry.npm.taobao.org/npm/-/</npmDownloadRoot>
+          <yarnDownloadRoot>http://data.linesno.com/web-tools/yarn/</yarnDownloadRoot>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and yarn</id>
+            <goals>
+              <goal>install-node-and-yarn</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v14.0.0</nodeVersion>
+              <yarnVersion>v1.22.10</yarnVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>yarn install</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>yarn run build</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <configuration>
+              <arguments>${build.maven.cmd}</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/docker/dist</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/dist</directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>
