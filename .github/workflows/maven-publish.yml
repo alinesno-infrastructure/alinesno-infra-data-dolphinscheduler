@@ -185,10 +185,7 @@ jobs:
 
       - name: Code scan
         run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
-
-      - name: Maven Dependency Tree Dependency Submission
-        uses: advanced-security/maven-dependency-submission-action@v3.0.2
-
+ 
       - name: Install MurphySec code scan cli
         run: |
           wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
