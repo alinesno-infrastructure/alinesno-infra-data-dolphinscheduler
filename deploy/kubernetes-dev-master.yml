@@ -1,12 +1,12 @@
-# 创建service为${PROJECT_MASTER_NAME}
+# 创建service为alinesno-infra-data-${PROJECT_MASTER_NAME}
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${PROJECT_MASTER_NAME}
+  name: alinesno-infra-data-${PROJECT_MASTER_NAME}
   namespace: ${NAMESPACE}
 spec:
   selector:
-    app: ${PROJECT_MASTER_NAME}
+    app: alinesno-infra-data-${PROJECT_MASTER_NAME}
     release: canary
   ports:
     - name: http
@@ -18,25 +18,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${PROJECT_MASTER_NAME}
+  name: alinesno-infra-data-${PROJECT_MASTER_NAME}
   namespace: ${NAMESPACE}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${PROJECT_MASTER_NAME}
+      app: alinesno-infra-data-${PROJECT_MASTER_NAME}
       release: canary
   template:
     metadata:
       labels:
-        app: ${PROJECT_MASTER_NAME}
+        app: alinesno-infra-data-${PROJECT_MASTER_NAME}
         release: canary
     spec:
       imagePullSecrets:
         - name: aliyun-docker-registry
       containers:
-        - name: ${PROJECT_MASTER_NAME}
-          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/${PROJECT_MASTER_NAME}:${VERSION}
+        - name: alinesno-infra-data-${PROJECT_MASTER_NAME}
+          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/alinesno-infra-data-${PROJECT_MASTER_NAME}:${VERSION}
           env:
             - name: JAVA_TOOL_OPTIONS
               value: |

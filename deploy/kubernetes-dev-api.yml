@@ -1,12 +1,12 @@
-# 创建service为${PROJECT_API_NAME}
+# 创建service为alinesno-infra-data-${PROJECT_API_NAME}
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${PROJECT_API_NAME}
+  name: alinesno-infra-data-${PROJECT_API_NAME}
   namespace: ${NAMESPACE}
 spec:
   selector:
-    app: ${PROJECT_API_NAME}
+    app: alinesno-infra-data-${PROJECT_API_NAME}
     release: canary
   ports:
     - name: http
@@ -18,25 +18,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${PROJECT_API_NAME}
+  name: alinesno-infra-data-${PROJECT_API_NAME}
   namespace: ${NAMESPACE}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${PROJECT_API_NAME}
+      app: alinesno-infra-data-${PROJECT_API_NAME}
       release: canary
   template:
     metadata:
       labels:
-        app: ${PROJECT_API_NAME}
+        app: alinesno-infra-data-${PROJECT_API_NAME}
         release: canary
     spec:
       imagePullSecrets:
         - name: aliyun-docker-registry
       containers:
-        - name: ${PROJECT_API_NAME}
-          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/${PROJECT_API_NAME}:${VERSION}
+        - name: alinesno-infra-data-${PROJECT_API_NAME}
+          image: ${ALIYUN_CR_REGISTORY}/${ALIYUN_CR_NAMESPACE}/alinesno-infra-data-${PROJECT_API_NAME}:${VERSION}
           env:
             - name: JAVA_TOOL_OPTIONS
               value: |
@@ -56,19 +56,19 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-${PROJECT_API_NAME}
+  name: ingress-alinesno-infra-data-${PROJECT_API_NAME}
   namespace: ${NAMESPACE}
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: "${PROJECT_API_NAME}.${INFRA_DEV_DOMAIN}"
+    - host: "alinesno-infra-data-${PROJECT_API_NAME}.${INFRA_DEV_DOMAIN}"
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: ${PROJECT_API_NAME}
+                name: alinesno-infra-data-${PROJECT_API_NAME}
                 port:
                   number: 8080
