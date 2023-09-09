@@ -156,7 +156,7 @@ jobs:
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
                         -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}} \
-                        -Djib.mainClass=org.apache.dolphinscheduler.server.master.MasterStandaloneServer
+                        -Djib.container.mainClass=org.apache.dolphinscheduler.server.master.MasterStandaloneServer
 
       - name: Deploy API to AliyunCR
         run: |
@@ -166,7 +166,7 @@ jobs:
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
                         -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}} \
-                        -Djib.mainClass=org.apache.dolphinscheduler.api.ApiApplicationServer
+                        -Djib.container.mainClass=org.apache.dolphinscheduler.api.ApiApplicationServer
 
       - name: Deploy Worker to AliyunCR
         run: |
@@ -176,7 +176,7 @@ jobs:
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
                         -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}} \
-                        -Djib.mainClass=org.apache.dolphinscheduler.server.worker.WorkerStandaloneServer
+                        -Djib.container.mainClass=org.apache.dolphinscheduler.server.worker.WorkerStandaloneServer
 
       - name: Install MurphySec code scan cli
         run: |
