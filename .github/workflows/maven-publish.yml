@@ -14,8 +14,12 @@ jobs:
       packages: write
 
     env:
+      # 项目管理
+      PROJECT_MASTER_NAME: 'dolphinscheduler-server-master'
+      PROJECT_API_NAME: 'dolphinscheduler-api'
+      PROJECT_WORKER_NAME: 'dolphinscheduler-worker-master'
+
       # 版本管理
-      PROJECT_NAME: 'alinesno-infra-base-scheduler-server/alinesno-infra-base-scheduler-server-starter'
       PRO_VERSION: '1.0.0-SNAPSHOT'
       CURRENT_PROFIRE: 'dev'
       BUILD_NUMBER: ${{ github.run_number }}
@@ -144,13 +148,32 @@ jobs:
       - name: Build and Deploy to Nexus
         run: mvn clean package --settings nexus-config.xml
 
-#      - name: Deploy to AliyunCR
-#        run: |
-#          mvn -B -U -f ${{ env.PROJECT_NAME }}/pom.xml clean compile jib:build \
-#                        -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
-#                        -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
-#                        -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
-#                        -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}}
+      - name: Deploy Master to AliyunCR
+        run: |
+          # master
+          mvn -B -U -f ${{ env.PROJECT_MASTER_NAME }}/pom.xml clean compile jib:build \
+                        -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
+                        -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
+                        -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
+                        -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}}
+
+      - name: Deploy API to AliyunCR
+        run: |
+          # api
+          mvn -B -U -f ${{ env.PROJECT_API_NAME }}/pom.xml clean compile jib:build \
+                        -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
+                        -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
+                        -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
+                        -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}}
+
+      - name: Deploy Worker to AliyunCR
+        run: |
+          # woker
+          mvn -B -U -f ${{ env.PROJECT_WORKER_NAME }}/pom.xml clean compile jib:build \
+                        -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
+                        -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
+                        -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
+                        -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}}
 
       - name: Install MurphySec code scan cli
         run: |

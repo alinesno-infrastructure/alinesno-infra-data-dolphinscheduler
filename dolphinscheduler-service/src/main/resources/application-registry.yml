@@ -1,7 +1,7 @@
 # 注册中心配置
 registry:
   plugin-name: zookeeper
-  servers: 127.0.0.1:2181
+  servers: 192.168.101.18:2181
   namespace: dolphinscheduler
   base-sleep-time-ms: 60
   max-sleep-ms: 300
