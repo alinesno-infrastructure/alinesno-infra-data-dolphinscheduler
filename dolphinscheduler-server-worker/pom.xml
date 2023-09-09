@@ -26,9 +26,9 @@
     <artifactId>dolphinscheduler-server-worker</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-		<docker.base.images>registry.cn-shenzhen.aliyuncs.com/alinesno-infra-base/openjdk:11.0.16-slim-buster-ds-worker</docker.base.images>
-    </properties>
+<!--    <properties>-->
+<!--		<docker.base.images>registry.cn-shenzhen.aliyuncs.com/alinesno-infra-base/openjdk:11.0.16-slim-buster-ds-worker</docker.base.images>-->
+<!--    </properties>-->
 
     <dependencies>
 
