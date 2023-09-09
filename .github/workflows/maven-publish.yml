@@ -17,7 +17,7 @@ jobs:
       # 项目管理
       PROJECT_MASTER_NAME: 'dolphinscheduler-server-master'
       PROJECT_API_NAME: 'dolphinscheduler-api'
-      PROJECT_WORKER_NAME: 'dolphinscheduler-master-worker'
+      PROJECT_WORKER_NAME: 'dolphinscheduler-server-worker'
 
       # 版本管理
       PRO_VERSION: '1.0.0-SNAPSHOT'
@@ -184,3 +184,64 @@ jobs:
 
       - name: Code scan
         run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
+
+
+      - name: Install MurphySec code scan cli
+        run: |
+          wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
+
+      - name: Code scan
+        run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: local remote scp
+        uses: cross-the-world/scp-pipeline@master
+        with:
+          host: ${{ secrets.SERVER_BETA_HOST_02 }}
+          port: ${{ secrets.SERVER_BETA_PORT_02 }}
+          user: ${{ secrets.SERVER_BETA_USER_02 }}
+          pass: ${{ secrets.SERVER_BETA_KEY_02 }}
+          local: "./deploy/*"
+          remote: /home/github-action/dolphinscheduler/
+
+      - name: SSH Pipelines
+        uses: cross-the-world/ssh-pipeline@master
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.SERVER_BETA_HOST_02 }}
+          port: ${{ secrets.SERVER_BETA_PORT_02 }}
+          user: ${{ secrets.SERVER_BETA_USER_02 }}
+          pass: ${{ secrets.SERVER_BETA_KEY_02 }}
+          connect_timeout: 30s
+          script: |
+            export PROJECT_MASTER_NAME=${{ env.PROJECT_MASTER_NAME }}
+            export PROJECT_API_NAME=${{ env.PROJECT_API_NAME }}
+            export PROJECT_WORKER_NAME=${{ env.PROJECT_WORKER_NAME }}
+
+            export VERSION=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}
+
+            export ALIYUN_CR_REGISTORY=${{ env.ALIYUN_CR_REGISTORY }}
+            export ALIYUN_CR_NAMESPACE=${{ env.ALIYUN_CR_NAMESPACE }}
+            export NAMESPACE=${{ secrets.K8S_NAMESPACE }}
+
+            export REDIS_HOST=${{ secrets.DEV_REDIS_HOST_02 }}
+            export REDIS_KEY=${{ secrets.DEV_REDIS_KEY_02 }}
+            export ZOOKEEPER_HOST=${{ secrets.DEV_ZOOKEEPER_HOST_02 }}
+
+            export INFRA_DEV_DOMAIN=${{ secrets.INFRA_BETA_BASE_DOMAIN }}
+
+            export DB_MYSQL_URL=${{ secrets.DEV_DB_MYSQL_URL }}
+            export DB_MYSQL_USRENAME=${{ secrets.DEV_DB_MYSQL_USRENAME }}
+            export DB_MYSQL_PASSWORD=${{ secrets.DEV_DB_MYSQL_PASSWORD }}
+
+            envsubst < /home/github-action/dolphinscheduler/kubernetes-${{ env.CURRENT_PROFIRE }}-api.yml | kubectl apply -f -
