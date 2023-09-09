@@ -237,3 +237,7 @@ jobs:
             export DB_MYSQL_PASSWORD=${{ secrets.DEV_DB_MYSQL_PASSWORD }}
 
             envsubst < /home/github-action/dolphinscheduler/kubernetes-${{ env.CURRENT_PROFIRE }}-api.yml | kubectl apply -f -
+            envsubst < /home/github-action/dolphinscheduler/kubernetes-${{ env.CURRENT_PROFIRE }}-master.yml | kubectl apply -f -
+            envsubst < /home/github-action/dolphinscheduler/kubernetes-${{ env.CURRENT_PROFIRE }}-worker.yml | kubectl apply -f -
+
+
