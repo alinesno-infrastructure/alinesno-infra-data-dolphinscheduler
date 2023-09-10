@@ -185,15 +185,51 @@ jobs:
 
       - name: Code scan
         run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_MASTER_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
+          format: 'sarif'
+          output: 'master-trivy-results.sarif'
+          exit-code: '0'
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'master-trivy-results.sarif'
   
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_API_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
-          ormat: 'table' 
+          format: 'sarif'
+          output: 'api-trivy-results.sarif'
           exit-code: '0'
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'api-trivy-results.sarif'
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ env.ALIYUN_CR_REGISTORY }}/${{ env.ALIYUN_CR_NAMESPACE }}/${{ env.PROJECT_WORKER_NAME }}:${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }}'
+          format: 'sarif'
+          output: 'worker-trivy-results.sarif'
+          exit-code: '0'
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'worker-trivy-results.sarif'
   
       - name: local remote scp
         uses: cross-the-world/scp-pipeline@master
