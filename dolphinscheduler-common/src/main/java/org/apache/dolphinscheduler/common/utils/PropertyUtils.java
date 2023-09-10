@@ -26,9 +26,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.apache.directory.api.util.Strings;
 import org.apache.dolphinscheduler.common.Constants;
 import org.apache.dolphinscheduler.spi.enums.ResUploadType;
+import org.apache.dolphinscheduler.spi.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -198,7 +198,7 @@ public class PropertyUtils {
     }
 
     public static Map<String, String> getPropertiesByPrefix(String prefix) {
-        if (Strings.isEmpty(prefix)) {
+        if (StringUtils.isEmpty(prefix)) {
             return null;
         }
         Set<Object> keys = properties.keySet();
