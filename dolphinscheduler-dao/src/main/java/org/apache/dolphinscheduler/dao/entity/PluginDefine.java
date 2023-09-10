@@ -34,7 +34,7 @@ public class PluginDefine {
      * id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
     /**
      * plugin name
@@ -74,11 +74,11 @@ public class PluginDefine {
         this.updateTime = new Date();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

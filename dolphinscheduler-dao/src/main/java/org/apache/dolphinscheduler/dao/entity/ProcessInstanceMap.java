@@ -30,7 +30,7 @@ public class ProcessInstanceMap {
      * id
      */
     @TableId(value="id", type=IdType.AUTO)
-    private int id;
+    private Integer id;
 
     /**
      * parent process instance id
@@ -47,11 +47,11 @@ public class ProcessInstanceMap {
      */
     private int processInstanceId;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -46,7 +46,7 @@ public class ProcessInstance {
      * id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
     /**
      * process definition code
@@ -286,11 +286,11 @@ public class ProcessInstance {
         this.processDefinition = processDefinition;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

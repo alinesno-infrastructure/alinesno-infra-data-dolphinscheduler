@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class WorkerGroup {
 
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -47,11 +47,11 @@ public class WorkerGroup {
     @TableField(exist = false)
     private boolean systemDefault;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

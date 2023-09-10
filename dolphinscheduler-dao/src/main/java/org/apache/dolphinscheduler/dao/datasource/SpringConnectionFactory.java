@@ -88,8 +88,11 @@ public class SpringConnectionFactory {
 
         GlobalConfig.DbConfig dbConfig = new GlobalConfig.DbConfig();
         dbConfig.setIdType(IdType.AUTO);
+
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setDbConfig(dbConfig);
+        globalConfig.setBanner(false);
+
         sqlSessionFactoryBean.setGlobalConfig(globalConfig);
         sqlSessionFactoryBean.setTypeAliasesPackage("org.apache.dolphinscheduler.dao.entity");
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();

@@ -40,6 +40,7 @@
 		<jib.maven.plugin.version>3.3.0</jib.maven.plugin.version>
 		<flatten.maven.plugin.version>1.1.0</flatten.maven.plugin.version>
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<version.maven-site-plugin>4.0.0-M9</version.maven-site-plugin>
 
 		<curator.version>4.3.0</curator.version>
 		<zookeeper.version>3.9.0</zookeeper.version>

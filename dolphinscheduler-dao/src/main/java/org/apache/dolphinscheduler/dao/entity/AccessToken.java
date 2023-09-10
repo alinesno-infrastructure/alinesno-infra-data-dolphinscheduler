@@ -29,7 +29,7 @@ public class AccessToken {
      * primary key
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
     /**
      * user_id
      */
@@ -58,11 +58,11 @@ public class AccessToken {
     @TableField(exist = false)
     private String userName;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

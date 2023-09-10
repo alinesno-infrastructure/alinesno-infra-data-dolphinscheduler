@@ -33,7 +33,7 @@ public class Project {
      * id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
     /**
      * user id
@@ -114,11 +114,11 @@ public class Project {
         this.instRunningCount = instRunningCount;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -225,7 +225,7 @@ public class Project {
     }
 
     public static final class Builder {
-        private int id;
+        private Integer id;
         private int userId;
         private String userName;
         private long code;

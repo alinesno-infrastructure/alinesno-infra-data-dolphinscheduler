@@ -29,7 +29,7 @@ public class ProjectUser {
      * id
      */
     @TableId(value="id", type=IdType.AUTO)
-    private int id;
+    private Integer id;
 
     @TableField("user_id")
     private int userId;
@@ -60,11 +60,11 @@ public class ProjectUser {
     @TableField("update_time")
     private Date updateTime;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

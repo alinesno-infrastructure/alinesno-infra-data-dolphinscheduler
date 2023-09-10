@@ -25,7 +25,7 @@ public class WorkerServer {
     /**
      * id
      */
-    private int id;
+    private Integer id;
 
     /**
      * host
@@ -60,11 +60,11 @@ public class WorkerServer {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
     private Date lastHeartbeatTime;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

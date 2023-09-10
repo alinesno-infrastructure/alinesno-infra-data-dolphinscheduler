@@ -215,12 +215,12 @@ public class EnvironmentServiceTest {
         Assert.assertEquals(Status.USER_NO_OPERATION_PERM, result.get(Constants.STATUS));
 
         loginUser = getAdminUser();
-        Mockito.when(taskDefinitionMapper.selectCount(Mockito.any(LambdaQueryWrapper.class))).thenReturn(1);
+        Mockito.when(taskDefinitionMapper.selectCount(Mockito.any(LambdaQueryWrapper.class))).thenReturn(1l);
         result = environmentService.deleteEnvironmentByCode(loginUser,1L);
         logger.info(result.toString());
         Assert.assertEquals(Status.DELETE_ENVIRONMENT_RELATED_TASK_EXISTS, result.get(Constants.STATUS));
 
-        Mockito.when(taskDefinitionMapper.selectCount(Mockito.any(LambdaQueryWrapper.class))).thenReturn(0);
+        Mockito.when(taskDefinitionMapper.selectCount(Mockito.any(LambdaQueryWrapper.class))).thenReturn(0l);
         Mockito.when(environmentMapper.deleteByCode(1L)).thenReturn(1);
         result = environmentService.deleteEnvironmentByCode(loginUser,1L);
         logger.info(result.toString());

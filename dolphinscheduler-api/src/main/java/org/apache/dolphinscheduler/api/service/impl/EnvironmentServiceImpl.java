@@ -286,8 +286,7 @@ public class EnvironmentServiceImpl extends BaseServiceImpl implements Environme
             return result;
         }
 
-        Integer relatedTaskNumber = taskDefinitionMapper
-                .selectCount(new QueryWrapper<TaskDefinition>().lambda().eq(TaskDefinition::getEnvironmentCode,code));
+        long relatedTaskNumber = taskDefinitionMapper.selectCount(new QueryWrapper<TaskDefinition>().lambda().eq(TaskDefinition::getEnvironmentCode,code));
 
         if (relatedTaskNumber > 0) {
             putMsg(result, Status.DELETE_ENVIRONMENT_RELATED_TASK_EXISTS);

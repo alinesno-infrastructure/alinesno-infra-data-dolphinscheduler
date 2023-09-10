@@ -50,7 +50,7 @@ public class TaskInstance implements Serializable {
      * id
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private int id;
+    private Integer id;
 
     /**
      * task name
@@ -307,11 +307,11 @@ public class TaskInstance implements Serializable {
         this.taskDefine = taskDefine;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
