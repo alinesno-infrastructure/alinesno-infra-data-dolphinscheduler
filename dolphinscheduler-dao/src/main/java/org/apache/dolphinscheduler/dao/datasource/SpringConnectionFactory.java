@@ -21,6 +21,9 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.mapping.VendorDatabaseIdProvider;
 import org.apache.ibatis.session.SqlSession;
@@ -36,15 +39,34 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
-import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 
 @Configuration
 public class SpringConnectionFactory {
 
     @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
+    public PaginationInnerInterceptor paginationInterceptor() {
+        PaginationInnerInterceptor paginationInterceptor = new PaginationInnerInterceptor();
+
+        paginationInterceptor.setMaxLimit(-1L);
+        paginationInterceptor.setDbType(DbType.MYSQL);
+
+        // 开启 count 的 join 优化,只针对部分 left join
+        paginationInterceptor.setOptimizeJoin(true);
+
+        return paginationInterceptor ;
+    }
+
+    /**
+     * 新的分页插件,一缓和二缓遵循mybatis的规则,需要设置 MybatisConfiguration#useDeprecatedExecutor = false 避免缓存出现问题(该属性会在旧插件移除后一同移除)
+     */
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        //向Mybatis过滤器链中添加分页拦截器
+        interceptor.addInnerInterceptor(paginationInterceptor());
+        //还可以添加i他的拦截器
+        return interceptor;
     }
 
     @Bean
@@ -59,9 +81,7 @@ public class SpringConnectionFactory {
         configuration.setCacheEnabled(false);
         configuration.setCallSettersOnNulls(true);
         configuration.setJdbcTypeForNull(JdbcType.NULL);
-        configuration.addInterceptor(paginationInterceptor());
 
-        configuration.setGlobalConfig(new GlobalConfig().setBanner(false));
         MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setConfiguration(configuration);
         sqlSessionFactoryBean.setDataSource(dataSource);
@@ -76,6 +96,7 @@ public class SpringConnectionFactory {
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("org/apache/dolphinscheduler/dao/mapper/*Mapper.xml"));
         sqlSessionFactoryBean.setTypeEnumsPackage("org.apache.dolphinscheduler.*.enums");
         sqlSessionFactoryBean.setDatabaseIdProvider(databaseIdProvider());
+
         return sqlSessionFactoryBean.getObject();
     }
 
