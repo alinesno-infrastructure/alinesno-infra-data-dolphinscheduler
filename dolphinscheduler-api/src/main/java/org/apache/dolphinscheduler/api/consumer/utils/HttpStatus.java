@@ -3,7 +3,8 @@ package org.apache.dolphinscheduler.api.consumer.utils;
 /**
  * 返回状态码
  * 
- * @author LuoAnDong
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class HttpStatus {
 	/**

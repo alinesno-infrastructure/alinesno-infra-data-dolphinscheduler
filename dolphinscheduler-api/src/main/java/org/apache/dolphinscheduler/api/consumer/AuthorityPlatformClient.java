@@ -24,8 +24,8 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * 对外权限第三方接口调用
  *
- * @author LuoAnDong
- * @since 2021年8月4日 下午5:22:31
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @Component
 public class AuthorityPlatformClient extends BaseConsumer {

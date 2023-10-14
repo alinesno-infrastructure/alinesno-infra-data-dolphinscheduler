@@ -43,7 +43,7 @@
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss">
   #spin-model {
     position: fixed;
     left: 20px;

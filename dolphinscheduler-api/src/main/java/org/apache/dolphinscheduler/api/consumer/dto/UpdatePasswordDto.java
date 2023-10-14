@@ -2,9 +2,9 @@ package org.apache.dolphinscheduler.api.consumer.dto;
 
 /**
  * 密码dto
- * 
- * @author LuoAnDong
- * @since 2022年3月17日 下午10:23:43
+ *
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class UpdatePasswordDto {
 

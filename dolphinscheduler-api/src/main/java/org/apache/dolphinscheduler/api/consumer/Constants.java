@@ -3,7 +3,7 @@ package org.apache.dolphinscheduler.api.consumer;
 /**
  * 通用常量信息
  * 
- * @author LuoAnDong
+ * @author luoxiaodong
  */
 public class Constants {
 	/**

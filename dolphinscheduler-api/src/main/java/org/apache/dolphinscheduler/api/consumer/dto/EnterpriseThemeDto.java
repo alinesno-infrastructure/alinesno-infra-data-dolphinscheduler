@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * 功能名： 【请填写功能名称】 数据表： enterprise_theme
  * 
- * @author LuoAnDong ${authorEmail}
- * @date 2021-08-04 19:24:38
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class EnterpriseThemeDto extends BaseDto {
 	private static final long serialVersionUID = 1L;

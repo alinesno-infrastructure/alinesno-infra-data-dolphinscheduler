@@ -10,8 +10,8 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * 基础的引用配置对象
- * @author LuoAnDong
- * @since 2022年2月1日 下午10:23:43
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class BaseConsumer {
 

@@ -19,8 +19,8 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Http请求服务
  * 
- * @author LuoAnDong
- * @since 2021年8月4日 下午7:13:25
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @Component
 public class HttpConsumer {

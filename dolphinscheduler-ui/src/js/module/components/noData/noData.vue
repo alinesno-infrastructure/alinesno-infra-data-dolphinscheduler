@@ -34,7 +34,7 @@
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss">
   .no-data-model {
     position: relative;
     width: calc(100%);

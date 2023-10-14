@@ -3,8 +3,8 @@ package org.apache.dolphinscheduler.api.consumer.dto;
 /**
  * 企业信息管理
  * 
- * @author LuoAnDong
- * @since 2021年10月27日 下午3:05:15
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @SuppressWarnings("serial")
 public class EnterpriseDto extends BaseDto {

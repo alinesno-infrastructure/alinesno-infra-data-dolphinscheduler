@@ -4,9 +4,9 @@ import java.util.Date;
 
 /**
  * 实体对象基类,定义基本属性
- * 
- * @author WeiXiaoJin
- * @date 2017年8月4日
+ *
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @SuppressWarnings("serial")
 public class BaseDto {

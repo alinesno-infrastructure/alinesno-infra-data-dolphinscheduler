@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 功能名： 【请填写功能名称】 数据表： manager_application
- * 
- * @author LuoAnDong ${authorEmail}
- * @date 2021-08-04 19:24:38
+ *
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class ManagerApplicationDto extends BaseDto {
 	private static final long serialVersionUID = 1L;

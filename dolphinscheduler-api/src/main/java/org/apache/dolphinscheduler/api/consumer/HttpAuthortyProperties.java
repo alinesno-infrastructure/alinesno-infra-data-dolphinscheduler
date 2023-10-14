@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 /**
  * 安全过滤路径，判断哪些不需要过滤的
  * 
- * @author LuoAnDong
- * @since 2020年12月3日 下午10:01:04
+ * @author luoxiaodong
+ * @version 1.0.0
  *
  */
 @Component

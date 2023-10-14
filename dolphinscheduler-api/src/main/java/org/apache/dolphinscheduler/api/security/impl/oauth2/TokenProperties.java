@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * 令牌配置
  *
- * @author LuoAnDong
+ * @author luoxiaodong
  * @since 2021年5月22日 下午2:29:03
  */
 @Component

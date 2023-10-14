@@ -3,8 +3,8 @@ package org.apache.dolphinscheduler.api.consumer.dto;
 /**
  * 组织机构
  * 
- * @author LuoAnDong
- * @since 2021年8月23日 下午8:10:43
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class DeptDto {
 
