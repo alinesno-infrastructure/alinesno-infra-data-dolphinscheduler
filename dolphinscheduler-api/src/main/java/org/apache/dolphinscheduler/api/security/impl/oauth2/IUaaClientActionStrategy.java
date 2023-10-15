@@ -17,7 +17,7 @@ public interface IUaaClientActionStrategy {
 	/**
 	 * 通过授权码和授权服务器交互获取token
 	 *
-	 * @param strategyContext 执行上下文
+	 * @param code 执行上下文
 	 * @throws IOException
 	 */
 	TokenBody handleExchangeToken(String code) throws IOException;

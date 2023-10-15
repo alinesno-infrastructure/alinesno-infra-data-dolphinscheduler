@@ -32,7 +32,7 @@ mybatis-plus:
 # 注册中心配置
 registry:
   plugin-name: zookeeper
-  servers: 192.168.101.18:2181
+  servers: 127.0.0.1:2181
   namespace: dolphinscheduler
   base-sleep-time-ms: 60
   max-sleep-ms: 300
@@ -45,6 +45,19 @@ registry:
 security:
   authentication:
     type: OAUTH2
+
+# sa-token配置
+sa-token:
+  token-name: satoken
+  host-path: http://alinesno-infra-base-identity-auth-application.beta.base.infra.linesno.com
+  sso:
+    auth-url: ${sa-token.host-path}/login
+    is-http: true
+    check-ticket-url: ${sa-token.host-path}/sso/checkTicket
+    slo-url: ${sa-token.host-path}/sso/signout
+    get-data-url: ${sa-token.host-path}/sso/getData
+  sign:
+    secret-key:
 
 logging:
   config: classpath:logback-api.xml   

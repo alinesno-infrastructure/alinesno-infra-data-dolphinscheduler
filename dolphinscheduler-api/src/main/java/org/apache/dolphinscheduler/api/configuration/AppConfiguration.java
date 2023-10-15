@@ -38,12 +38,15 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 /**
  * application configuration
+ *
+ * @author luoxiaodong
  */
 @Configuration
 public class AppConfiguration implements WebMvcConfigurer {
 
     public static final String LOGIN_INTERCEPTOR_PATH_PATTERN = "/**/*";
     public static final String LOGIN_PATH_PATTERN = "/login/**";
+    public static final String SA_TOKEN_LOGIN_PATH_PATTERN = "/sso/**";
     public static final String REGISTER_PATH_PATTERN = "/users/register";
     public static final String PATH_PATTERN = "/**";
     public static final String LOCALE_LANGUAGE_COOKIE = "language";
@@ -101,9 +104,17 @@ public class AppConfiguration implements WebMvcConfigurer {
         }
         registry.addInterceptor(loginInterceptor())
                 .addPathPatterns(LOGIN_INTERCEPTOR_PATH_PATTERN)
-                .excludePathPatterns(LOGIN_PATH_PATTERN, REGISTER_PATH_PATTERN,
-                        "/swagger-resources/**", "/webjars/**", "/v2/**",
-                        "/doc.html", "/swagger-ui.html", "*.html", "/ui/**");
+                .excludePathPatterns(
+                        LOGIN_PATH_PATTERN,
+                        SA_TOKEN_LOGIN_PATH_PATTERN,
+                        REGISTER_PATH_PATTERN,
+                        "/swagger-resources/**",
+                        "/webjars/**",
+                        "/v2/**",
+                        "/doc.html",
+                        "/swagger-ui.html",
+                        "*.html",
+                        "/ui/**");
     }
 
     @Override

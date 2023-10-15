@@ -50,35 +50,38 @@ public class Oauth2Authenticator extends AbstractSsoAuthenticator {
     private UsersService userService;
 
     @Override
-    public User login(String userId, String code, String extra) {
-    	
-    	log.info("oauth2 loginUser , userId:{} , code:{} , extra:{} " , userId , code , extra);
-    	User user = null;
-    	
-    	try {
-    		TokenBody tokenBody = uaaClientActionStrategy.handleExchangeToken(userId);
-    	
-    		if (tokenBody.getUserName() != null) {
-                //check if user exist
-                user = userService.getUserByUserName(tokenBody.getUserName());
-                if (user == null) {
-                
-                	ManagerAccountDto dto = authorityPlatformClient.findById(tokenBody.getUserId()) ; 
-                	
-                	// 创建资源关联用户
-                    user = userService.createUser(UserType.GENERAL_USER , dto.getLoginName() , dto.getEmail(), dto.getName() , dto.getId() , dto.getPhone() , 1) ; 
-                    
-                    // user = userService.createUser(UserType.GENERAL_USER, tokenBody.getUserName(), tokenBody.getUserName());
-                }
-            }
-    		
-    		
-		} catch (IOException e) {
-			log.debug("解决用户信息异常:{}" , e.getMessage());
-		}
-    	
-        return user ; 
+    public User login(String userId, String password, String extra) {
+        return userService.queryUser(userId, password);
     }
+//    public User login(String userId, String code, String extra) {
+//
+//    	log.info("oauth2 loginUser , userId:{} , code:{} , extra:{} " , userId , code , extra);
+//    	User user = null;
+//
+//    	try {
+//    		TokenBody tokenBody = uaaClientActionStrategy.handleExchangeToken(userId);
+//
+//    		if (tokenBody.getUserName() != null) {
+//                //check if user exist
+//                user = userService.getUserByUserName(tokenBody.getUserName());
+//                if (user == null) {
+//
+//                	ManagerAccountDto dto = authorityPlatformClient.findById(tokenBody.getUserId()) ;
+//
+//                	// 创建资源关联用户
+//                    user = userService.createUser(UserType.GENERAL_USER , dto.getLoginName() , dto.getEmail(), dto.getName() , dto.getId() , dto.getPhone() , 1) ;
+//
+//                    // user = userService.createUser(UserType.GENERAL_USER, tokenBody.getUserName(), tokenBody.getUserName());
+//                }
+//            }
+//
+//
+//		} catch (IOException e) {
+//			log.debug("解决用户信息异常:{}" , e.getMessage());
+//		}
+//
+//        return user ;
+//    }
 
 	@Override
 	public String getSignInUrl() {

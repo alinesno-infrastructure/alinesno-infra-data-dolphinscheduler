@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Value("${security.authentication.type:PASSWORD}")
     private String type;
 
-    private AutowireCapableBeanFactory beanFactory;
+    private final AutowireCapableBeanFactory beanFactory;
     private AuthenticationType authenticationType;
 
     @Autowired
@@ -57,20 +57,12 @@ public class SecurityConfig {
     @Bean(name = "authenticator")
     public Authenticator authenticator() {
         setAuthenticationType(type);
-        Authenticator authenticator;
-        switch (authenticationType) {
-            case PASSWORD:
-                authenticator = new PasswordAuthenticator();
-                break;
-            case LDAP:
-                authenticator = new LdapAuthenticator();
-                break;
-            case OAUTH2:
-                authenticator = new Oauth2Authenticator();
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + authenticationType);
-        }
+        Authenticator authenticator = switch (authenticationType) {
+            case PASSWORD -> new PasswordAuthenticator();
+            case LDAP -> new LdapAuthenticator();
+            case OAUTH2 -> new Oauth2Authenticator();
+            default -> throw new IllegalStateException("Unexpected value: " + authenticationType);
+        };
         beanFactory.autowireBean(authenticator);
         return authenticator;
     }

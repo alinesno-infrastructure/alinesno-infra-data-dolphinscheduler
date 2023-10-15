@@ -77,12 +77,19 @@ specific language governing permissions and * limitations under the License. */
 <script>
   import i18n from '@/module/i18n'
   import io from '@/module/io'
+  import { getParam } from '@/module/util/routerUtil'
   import cookies from 'js-cookie'
+  import router from '../home/router/index.js'
 
   export default {
     name: 'login-model',
     data () {
       return {
+
+        // 集成SaToken配置
+        back: getParam('back') || router.currentRoute.query.back,
+        ticket: getParam('ticket') || router.currentRoute.query.ticket ,
+
         spinnerLoading: false,
         userName: '',
         userPassword: '',
@@ -155,6 +162,32 @@ specific language governing permissions and * limitations under the License. */
           })
         })
       },
+      // 重定向至认证中心
+      _goSsoAuthUrl () {
+        return new Promise((resolve, reject) => {
+          io.get('sso/getSsoAuthUrl', {clientLoginUrl: location.href} , (res) => {
+            resolve(res.data)
+          }).catch((e) => {
+            console.log('Error:', e);
+            reject(e)
+          })
+        })
+      },
+      // 根据ticket值登录
+      _doLoginByTicket: function(ticket) {
+        console.log('ticket = ' + ticket) ;
+
+        io.get('sso/doLoginByTicket', {ticket: ticket}, function(res) {
+          console.log('/sso/doLoginByTicket 返回数据', res);
+          if(res.code === 0) {
+            localStorage.setItem('satoken', res.data);
+            // location.href = decodeURIComponent(this.back==undefined?'/':this.back);
+          } else {
+            alert(res.msg);
+          }
+        }.bind(this))
+
+      },
       _ssoLoginUrl () {
         return new Promise((resolve, reject) => {
           io.get('login/oauth2/endpoint', {}, (res) => {
@@ -174,37 +207,22 @@ specific language governing permissions and * limitations under the License. */
       }
     },
     created () {
-      let url = new URL(window.location.href)
-      let code = url.searchParams.get('code')
 
-      if (code) {
-        // 获取认证返回
+      console.log('获取 back 参数：', this.back)
+      console.log('获取 ticket 参数：', this.ticket)
 
-        this.userName = code
-        this.userPassword = code
-        this._ok()
-        return
+      debugger
+
+      if(this.ticket) {
+        this._doLoginByTicket(this.ticket);
+      } else {
+        this._goSsoAuthUrl().then((res) => {
+          console.log('res = ' + res) ;
+          debugger
+          location.href = res ;
+        });
       }
 
-      this._ssoLoginUrl().then((res) => {
-        window.location.href = res
-        this.ssoLoginUrl = res
-
-      /*
-        this.ssoLoginUrl = res
-
-        if (this.ssoLoginUrl) {
-          let url = new URL(window.location.href)
-          let state = url.searchParams.get('state')
-          let code = url.searchParams.get('code')
-          if (state && code) {
-            this.userName = state
-            this.userPassword = code
-            this._ok()
-          }
-        }
-        */
-      })
     },
     mounted () {}
   }

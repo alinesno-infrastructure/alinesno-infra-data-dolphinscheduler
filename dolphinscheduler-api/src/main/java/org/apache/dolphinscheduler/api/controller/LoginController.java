@@ -34,6 +34,7 @@ import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.api.exceptions.ApiException;
 import org.apache.dolphinscheduler.api.security.Authenticator;
 import org.apache.dolphinscheduler.api.security.impl.AbstractSsoAuthenticator;
+import org.apache.dolphinscheduler.api.security.impl.oauth2.Oauth2Authenticator;
 import org.apache.dolphinscheduler.api.service.SessionService;
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.common.Constants;
@@ -140,7 +141,18 @@ public class LoginController extends BaseController {
     @ApiOperation(value = "sso login", notes = "SSO_LOGIN_NOTES")
     @GetMapping(value = "/login/oauth2/endpoint")
     @ApiException(Status.NOT_SUPPORT_SSO)
-    public Result oauth2EndPoint() {
+    public Result oauth2EndPoint(HttpServletRequest request) {
+
+        if (authenticator instanceof Oauth2Authenticator) {
+
+            String signInUrl = ((AbstractSsoAuthenticator) authenticator).getSignInUrl() ;
+
+            signInUrl = "http://alinesno-infra-base-identity-auth-application.beta.base.infra.linesno.com/login" ;
+            String clientLoginUrl = request.getParameter("clientLoginUrl")  ;
+
+            return Result.success(signInUrl);
+        }
+
         if (authenticator instanceof AbstractSsoAuthenticator) {
             return Result.success(((AbstractSsoAuthenticator) authenticator).getSignInUrl());
         }
@@ -159,8 +171,7 @@ public class LoginController extends BaseController {
     @PostMapping(value = "/signOut")
     @ApiException(SIGN_OUT_ERROR)
     @AccessLogAnnotation(ignoreRequestArgs = {"loginUser", "request"})
-    public Result signOut(@ApiIgnore @RequestAttribute(value = Constants.SESSION_USER) User loginUser,
-                          HttpServletRequest request) {
+    public Result signOut(@ApiIgnore @RequestAttribute(value = Constants.SESSION_USER) User loginUser,  HttpServletRequest request) {
         String ip = getClientIpAddress(request);
         sessionService.signOut(ip, loginUser);
         //clear session

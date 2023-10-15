@@ -30,7 +30,7 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 	/**
 	 * 通过授权码和授权服务器交互获取token
 	 *
-	 * @param strategyContext 执行上下文
+	 * @param code 执行上下文
 	 * @throws IOException
 	 */
 	@Override
@@ -50,9 +50,7 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 		String accessToken = accessTokenBean.getAccess_token() ;
 		
 		// 获取openId
-		TokenBody tokenBody = TokenBody.parseToken(accessToken , tokenProperties);
-		
-		return tokenBody ; 
+        return TokenBody.parseToken(accessToken , tokenProperties);
 	}
 
 	/**
@@ -63,18 +61,6 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 	 */
 	@Override
 	public void handleGetLoginEndPoint(ActionStrategyContext strategyContext) throws IOException {
-//		HttpServletResponse resp = strategyContext.response;
-//		logger.info("handle request oauth login endpoint request");
-//
-////		ClientProperties clientProperties = Context.applicationContext.getBean(ClientProperties.class);
-////		new LoginEndPoint(clientProperties.getLoginEndPoint());
-//
-//		LoginEndPoint loginEndPoint = getLoginEndPoint();
-//		logger.debug("loginEndPoint = " + JSONObject.toJSONString(loginEndPoint));
-//
-//		AjaxResult ajaxResult = AjaxResult.success("操作成功", loginEndPoint);
-//		
-//		printJson(resp, ajaxResult);
 	}
 
 	/**
@@ -84,8 +70,7 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 	 */
 	@Override
 	public LoginEndPoint getLoginEndPoint() {
-		LoginEndPoint loginEndPoint = new LoginEndPoint(clientProperties.getLoginEndPoint());
-		return loginEndPoint;
+        return new LoginEndPoint(clientProperties.getLoginEndPoint());
 	}
 
 	/**
@@ -95,17 +80,6 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 	 */
 	@Override
 	public void handleSignOut(ActionStrategyContext strategyContext) throws IOException {
-//		HttpServletResponse response = strategyContext.response;
-//		HttpServletRequest request = strategyContext.request;
-//		TokenBody tokenBody = parseToken(request.getParameter("token"));
-//		if (tokenBody == null) {
-//			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//		} else {
-//			ConcurrentHashMap<String, String> sessionContext = strategyContext.sessionContext;
-//			sessionContext.put(tokenBody.getUserId(), tokenBody.getUserName());
-//			logger.info("user {} logout success", tokenBody.getUserName());
-//			printJson(response, AjaxResult.success("操作成功", ""));
-//		}
 	}
 
 	/**
@@ -115,29 +89,6 @@ public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy 
 	 */
 	@Override
 	public void handleUaaLogoutUrl(ActionStrategyContext strategyContext) throws IOException {
-//		String uaaServer = clientProperties.getAuthorizationServer();
-//
-//		String url = uaaServer + "/preLogout";
-//		AjaxResult ajaxResult = AjaxResult.success("操作成功", url);
-//
-//		printJson(strategyContext.response, ajaxResult);
 	}
-
-//	private void printJson(HttpServletResponse response, AjaxResult ajaxResult) throws IOException {
-//
-//		response.setHeader("Content-Type", "application/json;charset=utf-8");
-//		response.setStatus(HttpServletResponse.SC_OK);
-//
-//		PrintWriter writer = response.getWriter();
-//		writer.write(JSON.toJSONString(ajaxResult));
-//		writer.flush();
-//		writer.close();
-//
-//		response.flushBuffer();
-//	}
-
-//    private boolean isBlank(String s) {
-//        return s == null || s.length() == 0 || " ".equals(s.trim());
-//    }
 
 }

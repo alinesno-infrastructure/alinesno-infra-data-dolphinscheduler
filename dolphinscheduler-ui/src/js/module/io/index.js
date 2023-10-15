@@ -72,12 +72,17 @@ io.interceptors.response.use(
 // Global request interceptor registion
 io.interceptors.request.use(
   config => {
+
+    debugger
+
     const sIdCookie = cookies.get('sessionId')
+    const saToken = cookies.get('satoken')
     const sessionId = sessionStorage.getItem('sessionId')
     const requstUrl = config.url.substring(config.url.lastIndexOf('/') + 1)
-    if ((!sIdCookie || (sessionId && sessionId !== sIdCookie)) && requstUrl !== 'login' && requstUrl !== 'endpoint') {
+    if ((!sIdCookie || (sessionId && sessionId !== sIdCookie)) && requstUrl !== 'login' && requstUrl !== 'getSsoAuthUrl' && requstUrl !== 'doLoginByTicket' && requstUrl !== 'endpoint') {
       window.location.href = `${PUBLIC_PATH}/view/login/index.html`
     } else {
+
       const { method } = config
       if (method === 'get') {
         config.params = Object.assign({}, config.params, {
@@ -86,6 +91,7 @@ io.interceptors.request.use(
       }
       config.headers = config.headers || {}
       const language = cookies.get('language')
+      if (saToken) config.headers.satoken = "Bearer " + localStorage.getItem("satoken")
       if (language) config.headers.language = language
       if (sIdCookie) config.headers.sessionId = sIdCookie
       return config
