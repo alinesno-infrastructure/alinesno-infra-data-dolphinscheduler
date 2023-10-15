@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 应用客户端行为动作策略接口
  *
- * @author luoandon@gmail.com
- * @date 2021/11/9
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public interface IUaaClientActionStrategy {
 

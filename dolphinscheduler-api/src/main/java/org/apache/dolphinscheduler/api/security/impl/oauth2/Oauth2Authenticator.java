@@ -52,7 +52,7 @@ public class Oauth2Authenticator extends AbstractSsoAuthenticator {
     @Override
     public User login(String userId, String code, String extra) {
     	
-    	log.info("oauth2 loginUser , userId:{} , code:{} , extra:{} " + userId , code , extra);
+    	log.info("oauth2 loginUser , userId:{} , code:{} , extra:{} " , userId , code , extra);
     	User user = null;
     	
     	try {
@@ -74,7 +74,7 @@ public class Oauth2Authenticator extends AbstractSsoAuthenticator {
     		
     		
 		} catch (IOException e) {
-			log.debug("解决用户信息异常:{}" , e);
+			log.debug("解决用户信息异常:{}" , e.getMessage());
 		}
     	
         return user ; 

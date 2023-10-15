@@ -1,8 +1,8 @@
 package org.apache.dolphinscheduler.api.security.impl.oauth2;
 
 /**
- * @author luoandon@gmail.com
- * @date 2021/11/10
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class LoginEndPoint {
     /**

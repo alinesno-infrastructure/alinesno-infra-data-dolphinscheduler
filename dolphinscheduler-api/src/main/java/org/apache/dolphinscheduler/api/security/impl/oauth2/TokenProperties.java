@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 令牌配置
  *
  * @author luoxiaodong
- * @since 2021年5月22日 下午2:29:03
+ * @version 1.0.0
  */
 @Component
 public class TokenProperties {

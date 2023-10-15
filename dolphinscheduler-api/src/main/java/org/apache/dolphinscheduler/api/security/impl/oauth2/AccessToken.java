@@ -2,9 +2,9 @@ package org.apache.dolphinscheduler.api.security.impl.oauth2;
 
 /**
  * 会话信息
- * 
+ *
  * @author luoxiaodong
- * @since 2022年2月19日 下午10:23:43
+ * @version 1.0.0
  */
 public class AccessToken {
 

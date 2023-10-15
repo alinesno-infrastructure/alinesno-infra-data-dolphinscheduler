@@ -7,9 +7,9 @@ import io.jsonwebtoken.Jwts;
 
 /**
  * AccessToken获取到信息 
- * 
- * @author luoandon@gmail.com
- * @date 2021/11/11
+ *
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 public class TokenBody {
 	

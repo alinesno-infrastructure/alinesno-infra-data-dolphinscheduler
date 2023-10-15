@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @author luaodnong@gmail.com
- * @date 2021/7/6
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @Component
 public class ClientProperties {

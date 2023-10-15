@@ -13,8 +13,8 @@ import cn.hutool.json.JSONUtil;
 /**
  * 应用客户端行为动作策略接口 适配前后端分离的单页应用
  *
- * @author luoandon@gmail.com
- * @date 2021/11/9
+ * @author luoxiaodong
+ * @version 1.0.0
  */
 @Component
 public class SpaUaaClientActionStrategyImpl implements IUaaClientActionStrategy {
