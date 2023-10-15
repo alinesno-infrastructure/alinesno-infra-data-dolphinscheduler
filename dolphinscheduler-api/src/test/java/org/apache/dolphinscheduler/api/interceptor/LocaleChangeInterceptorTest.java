@@ -17,14 +17,14 @@
 
 package org.apache.dolphinscheduler.api.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.dolphinscheduler.api.controller.AbstractControllerTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class LocaleChangeInterceptorTest extends AbstractControllerTest {
 

@@ -17,10 +17,6 @@
 
 package org.apache.dolphinscheduler.api;
 
-import static org.apache.dolphinscheduler.common.Constants.SPRING_DATASOURCE_DRIVER_CLASS_NAME;
-
-import javax.annotation.PostConstruct;
-
 import org.apache.dolphinscheduler.common.utils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -29,6 +25,10 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+
+import javax.annotation.PostConstruct;
+
+import static org.apache.dolphinscheduler.common.Constants.SPRING_DATASOURCE_DRIVER_CLASS_NAME;
 
 @EnableAutoConfiguration
 @ServletComponentScan

@@ -17,10 +17,6 @@
 
 package org.apache.dolphinscheduler.api.aspect;
 
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.dolphinscheduler.common.enums.CacheType;
 import org.apache.dolphinscheduler.remote.command.CacheExpireCommand;
@@ -40,6 +36,10 @@ import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * aspect for cache evict

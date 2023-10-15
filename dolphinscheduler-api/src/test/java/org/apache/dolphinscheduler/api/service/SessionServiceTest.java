@@ -17,11 +17,6 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.dolphinscheduler.api.service.impl.SessionServiceImpl;
 import org.apache.dolphinscheduler.common.Constants;
@@ -43,6 +38,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mock.web.MockCookie;
 import org.springframework.mock.web.MockHttpServletRequest;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * session service test

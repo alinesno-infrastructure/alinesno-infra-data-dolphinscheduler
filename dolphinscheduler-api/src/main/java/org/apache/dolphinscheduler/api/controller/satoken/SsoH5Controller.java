@@ -5,7 +5,6 @@ import cn.dev33.satoken.sso.SaSsoProcessor;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
-import com.alibaba.fastjson.JSONObject;
 import com.dtflys.forest.Forest;
 import org.apache.commons.lang.StringUtils;
 import org.apache.dolphinscheduler.api.security.Authenticator;

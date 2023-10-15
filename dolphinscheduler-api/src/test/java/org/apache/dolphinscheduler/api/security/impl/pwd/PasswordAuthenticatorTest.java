@@ -17,13 +17,6 @@
 
 package org.apache.dolphinscheduler.api.security.impl.pwd;
 
-import static org.mockito.Mockito.when;
-
-import java.util.Date;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.dolphinscheduler.api.controller.AbstractControllerTest;
 import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.api.service.SessionService;
@@ -40,6 +33,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.UUID;
+
+import static org.mockito.Mockito.when;
 
 public class PasswordAuthenticatorTest extends AbstractControllerTest {
     private static Logger logger = LoggerFactory.getLogger(PasswordAuthenticatorTest.class);

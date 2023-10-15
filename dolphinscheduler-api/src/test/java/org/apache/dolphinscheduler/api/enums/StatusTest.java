@@ -16,15 +16,15 @@
  */
 package org.apache.dolphinscheduler.api.enums;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.util.Locale;
 import java.util.Optional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.springframework.context.i18n.LocaleContextHolder;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class StatusTest {
 

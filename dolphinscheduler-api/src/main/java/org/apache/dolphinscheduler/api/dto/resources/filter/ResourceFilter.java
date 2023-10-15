@@ -16,13 +16,13 @@
  */
 package org.apache.dolphinscheduler.api.dto.resources.filter;
 
+import org.apache.dolphinscheduler.dao.entity.Resource;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import org.apache.dolphinscheduler.dao.entity.Resource;
 
 /**
  * resource filter

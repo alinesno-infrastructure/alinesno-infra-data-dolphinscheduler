@@ -16,9 +16,9 @@
  */
 package org.apache.dolphinscheduler.api.dto;
 
-import java.util.List;
-
 import org.apache.dolphinscheduler.dao.entity.DefinitionGroupByUser;
+
+import java.util.List;
 
 /**
  * user process define dto

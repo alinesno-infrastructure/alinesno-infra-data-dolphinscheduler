@@ -17,10 +17,10 @@
 
 package org.apache.dolphinscheduler.api.enums;
 
+import org.springframework.context.i18n.LocaleContextHolder;
+
 import java.util.Locale;
 import java.util.Optional;
-
-import org.springframework.context.i18n.LocaleContextHolder;
 
 /**
  * status enum      // todo #4855 One category one interval

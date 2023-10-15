@@ -17,9 +17,9 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import java.util.Map;
-
 import org.apache.dolphinscheduler.common.enums.PluginType;
+
+import java.util.Map;
 
 /**
  * ui plugin service

@@ -17,13 +17,13 @@
 package org.apache.dolphinscheduler.api.dto.resources.visitor;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.dolphinscheduler.api.dto.resources.Directory;
 import org.apache.dolphinscheduler.api.dto.resources.FileLeaf;
 import org.apache.dolphinscheduler.api.dto.resources.ResourceComponent;
 import org.apache.dolphinscheduler.dao.entity.Resource;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * resource tree visitor

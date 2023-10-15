@@ -17,12 +17,6 @@
 
 package org.apache.dolphinscheduler.api.utils;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Map;
-
 import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.common.Constants;
 import org.apache.dolphinscheduler.common.enums.ProgramType;
@@ -42,6 +36,10 @@ import org.apache.dolphinscheduler.common.task.sql.SqlParameters;
 import org.apache.dolphinscheduler.common.task.subprocess.SubProcessParameters;
 import org.apache.dolphinscheduler.common.utils.JSONUtils;
 import org.junit.Test;
+
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 public class CheckUtilsTest {
 
