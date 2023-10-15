@@ -163,7 +163,7 @@
         height: 28px;
         line-height: 28px;
         padding: 0 8px;
-        background: #005bd4;
+        background: #3b5998;
         display: inline-block;
         margin-bottom: 8px;
         color: #fff;

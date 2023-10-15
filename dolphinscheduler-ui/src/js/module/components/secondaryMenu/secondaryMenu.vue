@@ -215,11 +215,11 @@ specific language governing permissions and * limitations under the License. */
           font-size: 13px;
         }
         &.active {
-          border-right: 2px solid #005bd4;
+          border-right: 2px solid #3b5998;
           background: #f5f5f5;
           span {
             font-weight: bold;
-            color: #005bd4;
+            color: #3b5998;
           }
         }
       }
@@ -228,15 +228,15 @@ specific language governing permissions and * limitations under the License. */
     .router-link-active {
       background: #f0f6fb;
       .name {
-        // border-right: 2px solid #005bd4;
+        // border-right: 2px solid #3b5998;
         background: #f5f5f5;
         a {
           span {
-            color: #005bd4;
+            color: #3b5998;
             font-weight: bold;
           }
           .fa {
-            color: #005bd4;
+            color: #3b5998;
           }
         }
       }

@@ -283,7 +283,7 @@
       padding:0 20px;
 
       ::selection {
-        background: #005bd4 ;
+        background: #3b5998 ;
         color: white;
       }
     }

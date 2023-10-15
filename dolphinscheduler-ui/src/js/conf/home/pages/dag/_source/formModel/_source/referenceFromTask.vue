@@ -189,7 +189,7 @@
         background-color: #f5f7fa;
       }
       &.selected {
-        color: #005bd4;
+        color: #3b5998;
         font-weight: 700;
       }
     }

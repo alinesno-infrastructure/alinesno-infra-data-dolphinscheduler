@@ -275,7 +275,7 @@
         margin-top: 96px;
         .fa {
           font-size: 50px;
-          color: #005bd4;
+          color: #3b5998;
         }
       }
       .p1 {

@@ -39,12 +39,12 @@ specific language governing permissions and * limitations under the License. */
     position: fixed;
     left: 0;
     top: 0;
-    height: 60px;
+    height: 40px;
     z-index: 1000;
   }
   .m-bottom {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 60px;
     width: calc(100% - 60px);
     min-height: calc(100% - 60px);

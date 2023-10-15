@@ -114,7 +114,7 @@
   height: 100vh;
   width: 60px;
   border-right: 1px solid #e6e6e6;
-  padding-top: 50px;
+  padding-top: 40px;
   overflow: hidden;
   position: fixed;
 }

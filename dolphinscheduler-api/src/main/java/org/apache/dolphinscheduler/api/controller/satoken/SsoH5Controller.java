@@ -5,9 +5,9 @@ import cn.dev33.satoken.sso.SaSsoProcessor;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
+import com.alibaba.fastjson.JSONObject;
 import com.dtflys.forest.Forest;
 import org.apache.commons.lang.StringUtils;
-import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.api.security.Authenticator;
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.api.utils.SaToResultUtil;
@@ -19,10 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
-import static org.apache.dolphinscheduler.api.enums.Status.IP_IS_EMPTY;
 import static org.apache.dolphinscheduler.common.Constants.*;
 
 /**
@@ -54,22 +53,37 @@ public class SsoH5Controller {
 
 	// 根据ticket进行登录
 	@GetMapping("/sso/doLoginByTicket")
-	public Result doLoginByTicket(String ticket , HttpServletRequest request) {
+	public SaResult doLoginByTicket(String ticket , HttpServletRequest request) {
 		Object loginId = SaSsoProcessor.instance.checkTicket(ticket, "/sso/doLoginByTicket");
 		if(loginId != null) {
 			StpUtil.login(loginId);
 
-			String userName = "" ;
-			String userPassword = "" ;
+			String userName = "admin" ;
+			String userPassword = "dolphinscheduler123" ;
 
-			String adminToken = validateUserLogin(userName , userPassword , request) ; //  UUID.randomUUID().toString() ;
+			String sessionId = validateUserLogin(userName , userPassword , request) ; //  UUID.randomUUID().toString() ;
 
 			SaResult result = SaResult.data(StpUtil.getTokenValue());
-			result.put("adminToken" , adminToken) ;
 
-			return SaToResultUtil.to(result) ;
+			Map<String, Object> data = new HashMap<>() ;
+			data.put("saToken" , result.getData()) ;
+			data.put("sessionId" , sessionId) ;
+			data.put("code" , 0) ;
+
+			result.setData(data) ;
+
+			result.setCode(0) ;
+			result.put("failed" , false) ;
+			result.put("success" , true) ;
+
+			return result ;
 		}
-		return SaToResultUtil.to(SaResult.error("无效ticket：" + ticket));
+
+		SaResult r = SaResult.error("无效ticket：" + ticket);
+		r.put("failed" , false) ;
+		r.put("success" , true) ;
+
+		return r ;
 	}
 
 	private String validateUserLogin(String userName , String userPassword , HttpServletRequest request) {
@@ -81,7 +95,7 @@ public class SsoH5Controller {
 		Result<Map<String, String>> result = authenticator.authenticate(userName, userPassword, ip);
 		log.debug("result = {}" , result.toString());
 
-		return result.getData().toString();
+		return result.getData().get("sessionId");
 	}
 
 	/**

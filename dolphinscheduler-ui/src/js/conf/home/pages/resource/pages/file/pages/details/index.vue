@@ -238,7 +238,7 @@
         top: 0;
         >em {
           font-size: 20px;
-          color: #005bd4;
+          color: #3b5998;
           cursor: pointer;
           vertical-align: middle;
         }

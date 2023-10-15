@@ -73,12 +73,11 @@ io.interceptors.response.use(
 io.interceptors.request.use(
   config => {
 
-    debugger
-
     const sIdCookie = cookies.get('sessionId')
     const saToken = cookies.get('satoken')
     const sessionId = sessionStorage.getItem('sessionId')
     const requstUrl = config.url.substring(config.url.lastIndexOf('/') + 1)
+
     if ((!sIdCookie || (sessionId && sessionId !== sIdCookie)) && requstUrl !== 'login' && requstUrl !== 'getSsoAuthUrl' && requstUrl !== 'doLoginByTicket' && requstUrl !== 'endpoint') {
       window.location.href = `${PUBLIC_PATH}/view/login/index.html`
     } else {

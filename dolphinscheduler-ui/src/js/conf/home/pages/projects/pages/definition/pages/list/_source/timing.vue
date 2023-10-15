@@ -433,6 +433,6 @@
     margin-top: -4px;
   }
   .x-date-packer-panel .x-date-packer-day .lattice em:hover {
-    background: #005bd4!important;
+    background: #3b5998!important;
   }
 </style>

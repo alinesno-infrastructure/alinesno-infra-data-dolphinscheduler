@@ -177,15 +177,33 @@ specific language governing permissions and * limitations under the License. */
       _doLoginByTicket: function(ticket) {
         console.log('ticket = ' + ticket) ;
 
-        io.get('sso/doLoginByTicket', {ticket: ticket}, function(res) {
-          console.log('/sso/doLoginByTicket 返回数据', res);
-          if(res.code === 0) {
-            localStorage.setItem('satoken', res.data);
-            // location.href = decodeURIComponent(this.back==undefined?'/':this.back);
-          } else {
-            alert(res.msg);
-          }
-        }.bind(this))
+        return new Promise((resolve, reject) => {
+          io.get('sso/doLoginByTicket', {ticket: ticket} , (res) => {
+            resolve(res.data)
+          }).catch((e) => {
+            console.log('Error:', e);
+            reject(e)
+          })
+        })
+
+        // io.get('sso/doLoginByTicket', {ticket: ticket}, function(res) {
+        //   console.log('/sso/doLoginByTicket 返回数据', res);
+
+        //   debugger
+
+        //   if(res.code === 0) {
+        //     localStorage.setItem('satoken', res.data);
+
+        //     let sessionId = res.data.sessionId
+        //     sessionStorage.setItem('sessionId', sessionId)
+        //     cookies.set('sessionId', sessionId, { path: '/' })
+
+        //     location.href = decodeURIComponent(this.back==undefined?'/':this.back);
+
+        //   } else {
+        //     alert(res.msg);
+        //   }
+        // }.bind(this))
 
       },
       _ssoLoginUrl () {
@@ -211,14 +229,27 @@ specific language governing permissions and * limitations under the License. */
       console.log('获取 back 参数：', this.back)
       console.log('获取 ticket 参数：', this.ticket)
 
-      debugger
-
       if(this.ticket) {
-        this._doLoginByTicket(this.ticket);
+        this._doLoginByTicket(this.ticket).then(res => {
+          console.log('/sso/doLoginByTicket 返回数据', res);
+
+          if(res.code === 0) {
+            localStorage.setItem('satoken', res.saToken);
+
+            let sessionId = res.sessionId
+            sessionStorage.setItem('sessionId', sessionId)
+            cookies.set('sessionId', sessionId, { path: '/' })
+
+            location.href = decodeURIComponent(this.back==undefined?'/':this.back);
+
+          } else {
+            alert(res.msg);
+          }
+        });
       } else {
         this._goSsoAuthUrl().then((res) => {
           console.log('res = ' + res) ;
-          debugger
+          
           location.href = res ;
         });
       }

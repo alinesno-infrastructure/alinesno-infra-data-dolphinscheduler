@@ -53,7 +53,7 @@
       background: #f6faff;
       border-radius: 4px;
       .bar {
-        background: #005bd4;
+        background: #3b5998;
         border-radius: 3px;
       }
     }
@@ -62,7 +62,7 @@
       color: #fff;
       display: inline-block;
       span {
-        color: #005bd4;
+        color: #3b5998;
         font-weight: bold;
       }
     }

@@ -315,7 +315,7 @@
         margin-top: 96px;
         .fa,.ans {
           font-size: 50px;
-          color: #005bd4;
+          color: #3b5998;
         }
       }
       .p1 {

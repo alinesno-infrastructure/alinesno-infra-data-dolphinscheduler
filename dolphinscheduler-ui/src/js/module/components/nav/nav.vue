@@ -11,13 +11,9 @@ specific language governing permissions and * limitations under the License. */
 <template>
   <div class="nav-model">
     <router-link :to="{ path: '/home' }" tag="div" class="logo-box">
-      <a
-        href="javascript:"
-        :style="
-          'background: url(' + saasLogoUrl + ') no-repeat;'
-        "
-        ><span> {{ saasTitle }} </span></a
-      >
+      <a href="javascript:" :style="'background: url(' + saasLogoUrl + ') no-repeat;'">
+        <span> {{ saasTitle }} </span>
+      </a>
     </router-link>
 
     <el-button
@@ -233,13 +229,11 @@ specific language governing permissions and * limitations under the License. */
       // TODO 待处理获取到值的问题
       // const { VUE_APP_SASS_TITLE, VUE_APP_SASS_URL, VUE_APP_SAAS_LOGO_URL,VUE_APP_ENABLE_LOGO,VUE_APP_DISPLAY_URL } = process.env
 
-      let saasTitle = '企业级数字化平台'
+      let saasTitle = 'AIP智能设施'
       let enableLogo = true
-      let saasUrl = 'http://alinesno-saas.beta.linesno.com'
-      let saasLogoUrl =
-        'http://training-static.linesno.com/fox_cloud/fox_header.png'
-      let displayUrl =
-        'http://alinesno-storage.admin.beta.linesno.com/storage/displayImg/'
+      let saasUrl = 'http://alinesno-infra-plat-console-admin.beta.plat.infra.linesno.com'
+      let saasLogoUrl = 'http://portal.infra.linesno.com/logo.png'
+      let displayUrl = 'http://alinesno-storage.admin.beta.linesno.com/storage/displayImg/'
 
       // if (VUE_APP_SASS_TITLE) {
       //   saasTitle = VUE_APP_SASS_TITLE
@@ -526,11 +520,9 @@ specific language governing permissions and * limitations under the License. */
 
 <style lang="scss" rel="stylesheet/scss">
 .nav-model {
-  height: 50px;
+  height: 40px;
   background: var(--cb-color-bg-primary, #fff);
-  // box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  border-bottom: var(--card-border-width, 1px) var(--card-border-style, solid)
-    var(--card-border-color, #e3e4e6);
+  border-bottom: var(--card-border-width, 1px) var(--card-border-style, solid) var(--card-border-color, #e3e4e6);
   position: relative;
   .m-title-box {
     text-align: center;
@@ -542,32 +534,35 @@ specific language governing permissions and * limitations under the License. */
       top: 12px;
     }
   }
+
   .el-dropdown {
     color: #555;
     font-size: 13px;
     vertical-align: middle;
-    line-height: 50px;
+    line-height: 40px;
+    font-weight: 550;
     margin-right: 25px;
   }
+
   .logo-box {
     position: absolute;
     left: 10px;
-    top: 4px;
+    top: 2px;
     cursor: pointer;
     > a {
       width: 180px;
-      height: 46px;
+      height: 35px;
       line-height: 30px;
       display: block;
       background: url('./logo.jpeg') no-repeat;
-      background-size: 40px !important;
+      background-size: 35px !important;
 
       span {
         font-size: 16px;
         text-shadow: 0 0 0 #000;
-        color: #005bd4;
+        color: #3b5998;
         margin-left: 50px;
-        margin-top: 6px;
+        margin-top: 4px;
         font-weight: 600;
         position: absolute;
       }
@@ -578,29 +573,31 @@ specific language governing permissions and * limitations under the License. */
     line-height: 50px;
     position: absolute;
     float: right;
-    right: 200px;
+    right: 150px;
     top: 0;
+
     .list {
       width: 96px;
       float: left;
       position: relative;
       cursor: pointer;
-      // margin-right: 14px;
+
       .nav-links {
-        height: 50px;
+        height: 40px;
         a {
           position: relative;
           text-decoration: none;
           font-size: 13px;
-          color: #555;
-          display: inline-block;
-          // float: left;
+          color: #222;
           text-align: center;
+
           span {
             display: block;
             width: 96px;
+            line-height: 40px !important;
             color: #555;
-            font-weight: 500;
+            font-weight: 550;
+
             .ansiconfont {
               vertical-align: -2px;
               font-size: 18px;
@@ -614,19 +611,19 @@ specific language governing permissions and * limitations under the License. */
           }
           &:hover {
             span {
-              color: #005bd4;
+              color: #3b5998;
             }
           }
           &.active {
             span {
               color: #2d8bf0;
               i {
-                color: #005bd4;
+                color: #3b5998;
               }
             }
             b {
               height: 2px;
-              background: #005bd4;
+              background: #3b5998;
               display: block;
               margin-top: -2px;
             }
@@ -670,7 +667,7 @@ specific language governing permissions and * limitations under the License. */
         vertical-align: middle;
         &:nth-child(1) {
           font-size: 20px;
-          color: #005bd4;
+          color: #3b5998;
         }
       }
       span {
@@ -680,7 +677,7 @@ specific language governing permissions and * limitations under the License. */
       }
       &:hover {
         span {
-          color: #005bd4;
+          color: #3b5998;
         }
       }
     }
@@ -702,7 +699,7 @@ specific language governing permissions and * limitations under the License. */
       &:hover {
         > i,
         > span {
-          color: #005bd4;
+          color: #3b5998;
         }
       }
     }
@@ -716,7 +713,7 @@ specific language governing permissions and * limitations under the License. */
         &:hover {
           i,
           span {
-            color: #005bd4;
+            color: #3b5998;
           }
         }
       }
@@ -733,7 +730,7 @@ specific language governing permissions and * limitations under the License. */
       top: 2px;
       > i {
         font-size: 22px;
-        color: #005bd4;
+        color: #3b5998;
       }
     }
   }
@@ -743,8 +740,8 @@ specific language governing permissions and * limitations under the License. */
   background-color: #f4f6f7;
   border: 0;
   position: absolute;
-  margin-left: 200px;
-  margin-top: 10px;
+  margin-left: 180px;
+  margin-top: 5px;
   font-weight: 500;
 }
 </style>
