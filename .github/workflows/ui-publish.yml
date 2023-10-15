@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd ${{ env.PROJECT_NAME }}
-          npm install
-          npm run build:prod
+          yarn install
+          yarn run build:uat
 
       - name: Login to Aliyun Container Registry (ACR)
         uses: aliyun/acr-login@v1
