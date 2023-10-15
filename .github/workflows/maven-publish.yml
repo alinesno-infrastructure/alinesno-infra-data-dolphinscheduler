@@ -179,12 +179,12 @@ jobs:
                         -Djib.to.auth.password=${{secrets.ALIYUN_CR_PASSWORD}} \
                         -Djib.container.mainClass=org.apache.dolphinscheduler.server.worker.WorkerStandaloneServer
 
-      - name: Install MurphySec code scan cli
-        run: |
-          wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
-
-      - name: Code scan
-        run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
+#      - name: Install MurphySec code scan cli
+#        run: |
+#          wget -q https://s.murphysec.com/release/install.sh -O - | /bin/bash
+#
+#      - name: Code scan
+#        run: murphysec scan . --token ${{ secrets.MURPHYSEC_TOKEN }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
