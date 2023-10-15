@@ -17,10 +17,10 @@
 
 package org.apache.dolphinscheduler.api.configuration;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
 
 @Configuration
 public class TrafficConfiguration {

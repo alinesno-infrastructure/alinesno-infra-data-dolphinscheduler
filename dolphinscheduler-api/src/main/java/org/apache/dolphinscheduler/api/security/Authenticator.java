@@ -17,12 +17,11 @@
 
 package org.apache.dolphinscheduler.api.security;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.dao.entity.User;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 public interface Authenticator {
     /**

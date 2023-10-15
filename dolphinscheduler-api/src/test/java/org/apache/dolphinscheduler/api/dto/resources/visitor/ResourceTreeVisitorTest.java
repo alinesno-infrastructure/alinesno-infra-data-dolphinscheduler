@@ -16,13 +16,13 @@
  */
 package org.apache.dolphinscheduler.api.dto.resources.visitor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.dolphinscheduler.api.dto.resources.ResourceComponent;
 import org.apache.dolphinscheduler.dao.entity.Resource;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * resource tree visitor test

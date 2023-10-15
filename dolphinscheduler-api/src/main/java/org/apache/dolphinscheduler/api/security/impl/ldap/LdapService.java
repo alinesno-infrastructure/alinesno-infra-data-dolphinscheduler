@@ -17,7 +17,12 @@
 
 package org.apache.dolphinscheduler.api.security.impl.ldap;
 
-import java.util.Properties;
+import org.apache.dolphinscheduler.common.enums.UserType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import javax.naming.Context;
 import javax.naming.NamingEnumeration;
@@ -28,13 +33,7 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
 import javax.naming.ldap.LdapContext;
-
-import org.apache.dolphinscheduler.common.enums.UserType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+import java.util.Properties;
 
 @Component
 @Configuration

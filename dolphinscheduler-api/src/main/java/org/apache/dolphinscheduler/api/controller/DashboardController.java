@@ -17,28 +17,24 @@
 
 package org.apache.dolphinscheduler.api.controller;
 
-import static org.apache.dolphinscheduler.api.enums.Status.SIGN_OUT_ERROR;
-
-import javax.servlet.http.HttpServletRequest;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.dolphinscheduler.api.aspect.AccessLogAnnotation;
-import org.apache.dolphinscheduler.api.consumer.AuthorityPlatformClient;
-import org.apache.dolphinscheduler.api.consumer.dto.EnterpriseDto;
 import org.apache.dolphinscheduler.api.exceptions.ApiException;
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.common.Constants;
 import org.apache.dolphinscheduler.dao.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import springfox.documentation.annotations.ApiIgnore;
+
+import javax.servlet.http.HttpServletRequest;
+
+import static org.apache.dolphinscheduler.api.enums.Status.SIGN_OUT_ERROR;
 
 /**
  * login controller
@@ -49,9 +45,6 @@ import springfox.documentation.annotations.ApiIgnore;
 public class DashboardController extends BaseController {
 	
 	private static final Logger log = LoggerFactory.getLogger(DashboardController.class) ; 
-
-    @Autowired
-    private AuthorityPlatformClient platformClient ;
 
     /**
      * sign out
@@ -68,10 +61,6 @@ public class DashboardController extends BaseController {
     
     	log.info("loginUser = {}" , loginUser) ; 
     	
-    	EnterpriseDto dto = platformClient.getEnterpriseByUserId(loginUser.getAccountId(), null) ; 
-    	
-    	log.info("EnterpriseDto = {}" , dto) ;
-    	
-        return success(dto);
+        return success();
     }
 }

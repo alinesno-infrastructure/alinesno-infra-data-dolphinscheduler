@@ -17,21 +17,17 @@
 
 package org.apache.dolphinscheduler.api.controller;
 
-import static org.apache.dolphinscheduler.common.Constants.COMMA;
-import static org.apache.dolphinscheduler.common.Constants.HTTP_HEADER_UNKNOWN;
-import static org.apache.dolphinscheduler.common.Constants.HTTP_X_FORWARDED_FOR;
-import static org.apache.dolphinscheduler.common.Constants.HTTP_X_REAL_IP;
-
-import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.common.Constants;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.apache.dolphinscheduler.common.Constants.*;
 
 /**
  * base controller

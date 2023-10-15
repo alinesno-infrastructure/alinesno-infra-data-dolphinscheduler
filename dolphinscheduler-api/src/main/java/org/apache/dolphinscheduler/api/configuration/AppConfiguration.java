@@ -17,8 +17,6 @@
 
 package org.apache.dolphinscheduler.api.configuration;
 
-import java.util.Locale;
-
 import org.apache.dolphinscheduler.api.interceptor.LocaleChangeInterceptor;
 import org.apache.dolphinscheduler.api.interceptor.LoginHandlerInterceptor;
 import org.apache.dolphinscheduler.api.interceptor.RateLimitInterceptor;
@@ -29,12 +27,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+
+import java.util.Locale;
 
 /**
  * application configuration

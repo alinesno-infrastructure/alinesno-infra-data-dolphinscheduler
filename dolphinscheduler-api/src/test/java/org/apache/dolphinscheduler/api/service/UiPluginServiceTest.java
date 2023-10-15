@@ -17,9 +17,6 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import java.util.Collections;
-import java.util.Map;
-
 import org.apache.dolphinscheduler.api.enums.Status;
 import org.apache.dolphinscheduler.api.service.impl.UiPluginServiceImpl;
 import org.apache.dolphinscheduler.common.enums.PluginType;
@@ -33,6 +30,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * ui plugin service test

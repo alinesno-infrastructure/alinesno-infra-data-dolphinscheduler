@@ -17,13 +17,6 @@
 
 package org.apache.dolphinscheduler.api.interceptor;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ExecutionException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.dolphinscheduler.api.configuration.TrafficConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,6 +24,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 @RunWith(PowerMockRunner.class)
 public class RateLimitInterceptorTest {

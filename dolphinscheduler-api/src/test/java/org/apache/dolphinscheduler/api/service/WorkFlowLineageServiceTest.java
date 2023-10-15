@@ -17,14 +17,6 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.dolphinscheduler.api.service.impl.WorkFlowLineageServiceImpl;
 import org.apache.dolphinscheduler.common.Constants;
 import org.apache.dolphinscheduler.dao.entity.ProcessLineage;
@@ -41,6 +33,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.*;
+
+import static org.mockito.Mockito.when;
 
 /**
  * work flow lineage service test

@@ -17,9 +17,9 @@
 
 package org.apache.dolphinscheduler.api.utils;
 
-import java.text.MessageFormat;
-
 import org.apache.dolphinscheduler.api.enums.Status;
+
+import java.text.MessageFormat;
 
 /**
  * result

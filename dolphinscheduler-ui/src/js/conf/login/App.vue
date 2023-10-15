@@ -186,26 +186,16 @@ specific language governing permissions and * limitations under the License. */
           })
         })
 
-        // io.get('sso/doLoginByTicket', {ticket: ticket}, function(res) {
-        //   console.log('/sso/doLoginByTicket 返回数据', res);
-
-        //   debugger
-
-        //   if(res.code === 0) {
-        //     localStorage.setItem('satoken', res.data);
-
-        //     let sessionId = res.data.sessionId
-        //     sessionStorage.setItem('sessionId', sessionId)
-        //     cookies.set('sessionId', sessionId, { path: '/' })
-
-        //     location.href = decodeURIComponent(this.back==undefined?'/':this.back);
-
-        //   } else {
-        //     alert(res.msg);
-        //   }
-        // }.bind(this))
-
       },
+      _isLogin() {
+        return new Promise((resolve, reject) => {
+          io.get('sso/isLogin', {}, (res) => {
+            resolve(res.data)
+          }).catch((e) => {
+            reject(e)
+          })
+        })
+      } ,
       _ssoLoginUrl () {
         return new Promise((resolve, reject) => {
           io.get('login/oauth2/endpoint', {}, (res) => {
@@ -225,6 +215,11 @@ specific language governing permissions and * limitations under the License. */
       }
     },
     created () {
+
+      // 判断用户是否登陆
+      this._isLogin().then(res => {
+
+      })
 
       console.log('获取 back 参数：', this.back)
       console.log('获取 ticket 参数：', this.ticket)

@@ -17,9 +17,9 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import java.util.Map;
-
 import org.apache.dolphinscheduler.dao.entity.User;
+
+import java.util.Map;
 
 /**
  * data analysis service

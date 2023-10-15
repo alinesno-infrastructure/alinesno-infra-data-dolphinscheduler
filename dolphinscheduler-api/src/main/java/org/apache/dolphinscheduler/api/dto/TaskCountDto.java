@@ -16,13 +16,13 @@
  */
 package org.apache.dolphinscheduler.api.dto;
 
+import org.apache.dolphinscheduler.common.enums.ExecutionStatus;
+import org.apache.dolphinscheduler.dao.entity.ExecuteStatusCount;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.apache.dolphinscheduler.common.enums.ExecutionStatus;
-import org.apache.dolphinscheduler.dao.entity.ExecuteStatusCount;
 
 /**
  * task count dto

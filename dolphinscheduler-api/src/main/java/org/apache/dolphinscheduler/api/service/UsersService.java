@@ -17,13 +17,13 @@
 
 package org.apache.dolphinscheduler.api.service;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import org.apache.dolphinscheduler.api.utils.Result;
 import org.apache.dolphinscheduler.common.enums.UserType;
 import org.apache.dolphinscheduler.dao.entity.User;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * users service

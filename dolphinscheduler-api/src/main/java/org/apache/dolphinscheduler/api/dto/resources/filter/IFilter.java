@@ -16,9 +16,9 @@
  */
 package org.apache.dolphinscheduler.api.dto.resources.filter;
 
-import java.util.List;
-
 import org.apache.dolphinscheduler.dao.entity.Resource;
+
+import java.util.List;
 
 /**
  * interface filter

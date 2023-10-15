@@ -16,8 +16,6 @@
  */
 package org.apache.dolphinscheduler.api.exceptions;
 
-import java.lang.reflect.Method;
-
 import org.apache.dolphinscheduler.api.controller.AccessTokenController;
 import org.apache.dolphinscheduler.api.controller.ProcessDefinitionController;
 import org.apache.dolphinscheduler.api.enums.Status;
@@ -26,6 +24,8 @@ import org.apache.dolphinscheduler.dao.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.web.method.HandlerMethod;
+
+import java.lang.reflect.Method;
 
 public class ApiExceptionHandlerTest {
 
