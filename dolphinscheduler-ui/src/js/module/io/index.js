@@ -78,7 +78,7 @@ io.interceptors.request.use(
     const sessionId = sessionStorage.getItem('sessionId')
     const requstUrl = config.url.substring(config.url.lastIndexOf('/') + 1)
 
-    if ((!sIdCookie || (sessionId && sessionId !== sIdCookie)) && requstUrl !== 'login' && requstUrl !== 'getSsoAuthUrl' && requstUrl !== 'doLoginByTicket' && requstUrl !== 'endpoint') {
+    if ((!sIdCookie || (sessionId && sessionId !== sIdCookie)) && requstUrl !== 'login' && requstUrl !== 'isLogin'  && requstUrl !== 'getSsoAuthUrl' && requstUrl !== 'doLoginByTicket' && requstUrl !== 'endpoint') {
       window.location.href = `${PUBLIC_PATH}/view/login/index.html`
     } else {
 
