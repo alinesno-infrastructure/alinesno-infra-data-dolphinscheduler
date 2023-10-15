@@ -59,8 +59,8 @@ public class SsoH5Controller {
 		if(loginId != null) {
 			StpUtil.login(loginId);
 
-			String userName = "admin" ;
-			String userPassword = "dolphinscheduler123" ;
+			String userName = "" ;
+			String userPassword = "" ;
 
 			String adminToken = validateUserLogin(userName , userPassword , request) ; //  UUID.randomUUID().toString() ;
 
