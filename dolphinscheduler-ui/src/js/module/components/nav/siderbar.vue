@@ -117,7 +117,7 @@
   padding-top: 40px;
   overflow: hidden;
   position: fixed;
-  z-index: 10000;
+  z-index: 100;
 }
 
 .product-drawer {
