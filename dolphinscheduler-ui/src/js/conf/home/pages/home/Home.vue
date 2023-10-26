@@ -14,14 +14,10 @@
               <span><i class="el-icon-monitor"></i>
                 {{ currentEnvClusterObj.clusterName }}
               </span>
-              <span>
-                <i class="el-icon-link"></i>
-                应用地址: {{ currentEnvClusterObj.apiServerUrl }}
-              </span>
             </div>
           </div>
           <div class="title-desc">
-            集群状态展示集群资源的概览和详情，您可以查看集群资源的监控数据和用量排行情况。
+            {{ currentEnvClusterObj.desc }}
           </div>
         </div>
       </div>
@@ -55,8 +51,8 @@ export default {
     return {
       currentEnvClusterObj: {
         appName: '数据编排计算服务',
-        clusterName: '基于dolphinscheduler二次开发版',
-        apiServerUrl: 'http://portal.infra.linesno.com'
+        clusterName: '针对于离线计算的数据治理能力',
+        desc: '基于DolphinScheduler二次开发的数据集成服务能力，用于数据治理的工作流程编排能力。'
       }
     };
   }
