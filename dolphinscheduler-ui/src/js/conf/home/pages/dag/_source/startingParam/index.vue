@@ -114,7 +114,7 @@
           color: #0097e0;
           margin-right: 4px;
         }
-        font-size: 16px;
+        // font-size: 16px;
       }
       .box-bd {
         margin-left: 20px;
