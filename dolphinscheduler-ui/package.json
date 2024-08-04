@@ -96,6 +96,12 @@
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
+  "resolutions": {
+    "ml-matrix": "6.10.8"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.7"
+  },
   "eslintConfig": {
     "rules": {
       "eslint-disable-next-line": false
