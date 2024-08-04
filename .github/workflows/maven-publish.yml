@@ -16,6 +16,7 @@ jobs:
 
     env:
       # 项目管理
+      PROJECT_UI_NAME: 'dolphinscheduler-ui'
       PROJECT_MASTER_NAME: 'dolphinscheduler-server-master'
       PROJECT_API_NAME: 'dolphinscheduler-api'
       PROJECT_WORKER_NAME: 'dolphinscheduler-server-worker'
@@ -83,7 +84,7 @@ jobs:
           echo '      <mirrorOf>snapshots</mirrorOf>' >> nexus-config.xml
           echo '      <url>${{ secrets.NEXUS_REPOSITORY_SNAPSHOT }}</url>' >> nexus-config.xml
           echo '    </mirror>' >> nexus-config.xml
-          echo '  </mirrors>' >> nexus-config.xml 
+          echo '  </mirrors>' >> nexus-config.xml
 
           echo '  <profiles>' >> nexus-config.xml
           echo '    <profile>' >> nexus-config.xml
@@ -149,6 +150,11 @@ jobs:
       - name: Build and Deploy to Nexus
         run: mvn clean package install --settings nexus-config.xml
 
+      - name: Deploy And Instsall UI to AliyunCR
+        run: |
+          # ui
+          mvn -B -U -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean install && mvn -B -U -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean deploy
+
       - name: Deploy Master to AliyunCR
         run: |
           # master
@@ -200,7 +206,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'
-    
+
       - name: local remote scp
         uses: cross-the-world/scp-pipeline@master
         with:
