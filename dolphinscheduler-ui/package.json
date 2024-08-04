@@ -12,7 +12,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue ./src",
     "lint:fix": "eslint --ext .js,.vue --fix ./src",
-    "build:uat": "yarn run clean && cross-env NODE_ENV=production PUBLIC_PATH= BASE_URL=/prod-api webpack --config ./build/webpack.config.uat.js",
+    "build:uat": "yarn run clean && cross-env NODE_ENV=production PUBLIC_PATH= BASE_URL= webpack --config ./build/webpack.config.uat.js",
     "build:release": "yarn run clean && cross-env NODE_ENV=production PUBLIC_PATH= BASE_URL= webpack --config ./build/webpack.config.release.js"
   },
   "dependencies": {
