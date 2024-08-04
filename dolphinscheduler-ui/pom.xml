@@ -86,7 +86,8 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/docker/dist</outputDirectory>
+              <outputDirectory>src/main/resources/static</outputDirectory>
+              <overwrite>true</overwrite>
               <resources>
                 <resource>
                   <directory>${basedir}/dist</directory>
