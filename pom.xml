@@ -6,13 +6,13 @@
 		<artifactId>apache</artifactId>
 		<version>30</version>
 	</parent>
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apache.dolphinscheduler</groupId>
 	<artifactId>dolphinscheduler</artifactId>
-	
+
 	<name>alinesno-infra-data-scheduler</name>
-	
+
 	<version>1.0.0-M2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -28,7 +28,7 @@
 		<flatten.maven.plugin.version>1.1.0</flatten.maven.plugin.version>
 		<lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
 		<maven.test.skip>true</maven.test.skip>
-		
+
 		<!-- docker registry -->
 		<docker.repository>registry.cn-shenzhen.aliyuncs.com</docker.repository>
 		<docker.public.repostory>registry.cn-shenzhen.aliyuncs.com</docker.public.repostory>
@@ -73,7 +73,7 @@
 		<commons.email.version>1.5</commons.email.version>
 		<poi.version>4.1.2</poi.version>
 		<javax.servlet.api.version>3.1.0</javax.servlet.api.version>
-		<commons.collections4.version>4.1</commons.collections4.version> 
+		<commons.collections4.version>4.1</commons.collections4.version>
 		<guava.version>32.1.2-jre</guava.version>
 		<postgresql.version>42.6.0</postgresql.version>
 		<hive.jdbc.version>2.3.3</hive.jdbc.version>
@@ -116,30 +116,31 @@
 		<maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 		<hibernate.validator.version>6.2.2.Final</hibernate.validator.version>
 	</properties>
-	
+
 	<modules>
-		<!-- 通知服务包 -->	
+		<!-- 通知服务包 -->
 		<module>dolphinscheduler-alert</module>
-		
+
 		<module>dolphinscheduler-spi</module>
 		<module>dolphinscheduler-registry-api</module>
 		<module>dolphinscheduler-task-api</module>
 		<module>dolphinscheduler-server</module>
 		<module>dolphinscheduler-common</module>
-		
+
 		<!-- 网关服务包 -->
+		<module>dolphinscheduler-ui</module>
 		<module>dolphinscheduler-api</module>
-		
+
 		<module>dolphinscheduler-dao</module>
 		<module>dolphinscheduler-remote</module>
 		<module>dolphinscheduler-service</module>
 		<module>dolphinscheduler-datasource-all</module>
 		<module>dolphinscheduler-python</module>
-		
+
 		<!-- 单独服务包 -->
 		<module>dolphinscheduler-server-master</module>
 		<module>dolphinscheduler-server-worker</module>
-		
+
 	</modules>
 
 	<dependencyManagement>
@@ -299,13 +300,13 @@
 				<artifactId>dolphinscheduler-alert-server</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.dolphinscheduler</groupId>
 				<artifactId>dolphinscheduler-registry-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.dolphinscheduler</groupId>
 				<artifactId>dolphinscheduler-datasource-plugin</artifactId>
@@ -322,7 +323,7 @@
 				<artifactId>dolphinscheduler-task-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.apache.curator</groupId>
 				<artifactId>curator-framework</artifactId>
@@ -796,7 +797,7 @@
 					<skip>false</skip> <!--not skip compile test classes-->
 				</configuration>
 			</plugin>
-			
+
 			<!-- google docker打包插件 mvn compile jib:build mvn compile jib:dockerBuild
                 mvn compile jib:buildTar -->
 			<plugin>
