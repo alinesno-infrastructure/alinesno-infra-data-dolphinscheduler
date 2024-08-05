@@ -40,8 +40,9 @@
         <artifactId>frontend-maven-plugin</artifactId>
         <version>1.10.0</version>
         <configuration>
-          <!-- 若不方便访问官网，可使用国内淘宝镜像 -->
+          <!-- 若不方便访问官网，可使用国内淘宝镜像 
           <nodeDownloadRoot>https://npm.taobao.org/mirrors/node/</nodeDownloadRoot>
+          -->
           <npmDownloadRoot>https://registry.npm.taobao.org/npm/-/</npmDownloadRoot>
           <yarnDownloadRoot>http://data.linesno.com/web-tools/yarn/</yarnDownloadRoot>
         </configuration>
