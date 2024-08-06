@@ -153,12 +153,13 @@ jobs:
       - name: Deploy And Instsall UI to AliyunCR
         run: |
           # ui
-          mvn -B -U -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean install && mvn -B -U -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean deploy
+          mvn -B -U -s nexus-config.xml -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean install 
+          mvn -B -U -s nexus-config.xml -f ${{ env.PROJECT_UI_NAME }}/pom.xml clean deploy
 
       - name: Deploy Master to AliyunCR
         run: |
           # master
-          mvn -B -U -f ${{ env.PROJECT_MASTER_NAME }}/pom.xml clean compile jib:build \
+          mvn -B -U -s nexus-config.xml -f ${{ env.PROJECT_MASTER_NAME }}/pom.xml clean compile jib:build \
                         -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
@@ -168,7 +169,7 @@ jobs:
       - name: Deploy API to AliyunCR
         run: |
           # api
-          mvn -B -U -f ${{ env.PROJECT_API_NAME }}/pom.xml clean compile jib:build \
+          mvn -B -U -s nexus-config.xml -f ${{ env.PROJECT_API_NAME }}/pom.xml clean compile jib:build \
                         -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
@@ -178,7 +179,7 @@ jobs:
       - name: Deploy Worker to AliyunCR
         run: |
           # woker
-          mvn -B -U -f ${{ env.PROJECT_WORKER_NAME }}/pom.xml clean compile jib:build \
+          mvn -B -U -s nexus-config.xml -f ${{ env.PROJECT_WORKER_NAME }}/pom.xml clean compile jib:build \
                         -Ddocker.registry.name=${{ env.ALIYUN_CR_NAMESPACE }} \
                         -Djib.to.tags=${{ env.PRO_VERSION }}.${{ env.BUILD_NUMBER }} \
                         -Djib.to.auth.username=${{secrets.ALIYUN_CR_USERNAME}} \
